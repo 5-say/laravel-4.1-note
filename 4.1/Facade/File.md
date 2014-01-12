@@ -5,6 +5,35 @@ File
 
 ---
 
+- [确定文件是否存在](#)
+- [获取文件内容](#)
+- [获取远程文件内容](#)
+- [获取 php 文件的返回值](#)
+- [统一 API require_once](#)
+- [统一 API 替换文件内容 file_put_contents](#)
+- [向文件头部累加内容](#)
+- [向文件尾部累加内容](#)
+- [删除文件](#)
+- [统一 API 移动文件或重命名 rename](#)
+- [统一 API 复制文件 copy](#)
+- [获取文件拓展名](#)
+- [统一 API 获取文件类型 filetype 获取文件类型](#)
+- [统一 API 获取文件大小 filesize 获取文件大小](#)
+- [统一 API 获取文件最后修改时间 filemtime](#)
+- [判断指定路径是否是一个目录](#)
+- [判断指定路径是否可写](#)
+- [判断指定路径是否是一个文件](#)
+- [统一 API 寻找与模式匹配的文件路径 glob](#)
+- [获取指定目录下所有文件的数组（不包含文件夹）](#)
+- [获取指定目录下所有文件夹和文件的数组（递归）](#)
+- [获取指定目录下所有文件夹的数组](#)
+- [创建目录](#)
+- [复制目录](#)
+- [递归删除目录](#)
+- [清除目录下文件](#)
+
+---
+
 ##### 确定文件是否存在
 
     @param  string  $path
@@ -120,41 +149,41 @@ File
     @return bool
     public function isFile($file)
 
-##### Find path names matching a given pattern.
+##### 统一 API 寻找与模式匹配的文件路径 glob
 
     @param  string  $pattern
     @param  int     $flags
     @return array
     public function glob($pattern, $flags = 0)
 
-##### Get an array of all files in a directory.
+##### 获取指定目录下所有文件的数组（不包含文件夹）
 
     @param  string  $directory
     @return array
     public function files($directory)
 
-##### Get all of the files from the given directory (recursive).
+##### 获取指定目录下所有文件夹和文件的数组（递归）
 
     @param  string  $directory
     @return array
     public function allFiles($directory)
 
-##### Get all of the directories within a given directory.
+##### 获取指定目录下所有文件夹的数组
 
     @param  string  $directory
     @return array
     public function directories($directory)
 
-##### Create a directory.
+##### 创建目录
 
     @param  string  $path
     @param  int     $mode
     @param  bool    $recursive
     @param  bool    $force
     @return bool
-    public function makeDirectory($path, $mode = 0777, $recursive = false, 
-        $force = false)
-##### Copy a directory from one location to another.
+    public function makeDirectory($path, $mode = 0777, $recursive = false, $force = false)
+
+##### 复制目录
 
     @param  string  $directory
     @param  string  $destination
@@ -162,7 +191,7 @@ File
     @return bool
     public function copyDirectory($directory, $destination, $options = null)
 
-##### Recursively delete a directory.
+##### 递归删除目录
 
     The directory itself may be optionally preserved.
     @param  string  $directory
@@ -170,7 +199,7 @@ File
     @return bool
     public function deleteDirectory($directory, $preserve = false)
 
-##### Empty the specified directory of all files and folders.
+##### 清除目录下文件
 
     @param  string  $directory
     @return bool
