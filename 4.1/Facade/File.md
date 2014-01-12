@@ -9,21 +9,21 @@ File
 - [获取文件内容](#)
 - [获取远程文件内容](#)
 - [获取 php 文件的返回值](#)
-- [统一 API require_once](#)
-- [统一 API 替换文件内容 file_put_contents](#)
+- [==require_once](#)
+- [替换文件内容 ==file_put_contents](#)
 - [向文件头部累加内容](#)
 - [向文件尾部累加内容](#)
 - [删除文件](#)
-- [统一 API 移动文件或重命名 rename](#)
-- [统一 API 复制文件 copy](#)
+- [移动文件或重命名 ==rename](#)
+- [复制文件 ==copy](#)
 - [获取文件拓展名](#)
-- [统一 API 获取文件类型 filetype 获取文件类型](#)
-- [统一 API 获取文件大小 filesize 获取文件大小](#)
-- [统一 API 获取文件最后修改时间 filemtime](#)
+- [获取文件类型 ==filetype](#)
+- [获取文件大小 ==filesize](#)
+- [获取文件最后修改时间 ==filemtime](#)
 - [判断指定路径是否是一个目录](#)
 - [判断指定路径是否可写](#)
 - [判断指定路径是否是一个文件](#)
-- [统一 API 寻找与模式匹配的文件路径 glob](#)
+- [寻找与模式匹配的文件路径 ==glob](#)
 - [获取指定目录下所有文件的数组（不包含文件夹）](#)
 - [获取指定目录下所有文件夹和文件的数组（递归）](#)
 - [获取指定目录下所有文件夹的数组](#)
@@ -60,13 +60,13 @@ File
     @throws FileNotFoundException
     public function getRequire($path)
 
-##### 统一 API require_once
+##### ==require_once
 
     @param  string  $file
     @return mixed
     public function requireOnce($file)
 
-##### 统一 API 替换文件内容 file_put_contents
+##### 替换文件内容 ==file_put_contents
 
     @param  string  $path
     @param  string  $contents
@@ -93,14 +93,14 @@ File
     @return bool
     public function delete($paths)
 
-##### 统一 API 移动文件或重命名 rename
+##### 移动文件或重命名 ==rename
 
     @param  string  $path
     @param  string  $target
     @return bool
     public function move($path, $target)
 
-##### 统一 API 复制文件 copy
+##### 复制文件 ==copy
 
     @param  string  $path
     @param  string  $target
@@ -113,19 +113,19 @@ File
     @return string
     public function extension($path)
 
-##### 统一 API 获取文件类型 filetype 获取文件类型
+##### 获取文件类型 ==filetype
 
     @param  string  $path
     @return string
     public function type($path)
 
-##### 统一 API 获取文件大小 filesize 获取文件大小
+##### 获取文件大小 ==filesize
 
     @param  string  $path
     @return int
     public function size($path)
 
-##### 统一 API 获取文件最后修改时间 filemtime
+##### 获取文件最后修改时间 ==filemtime
 
     @param  string  $path
     @return int
@@ -149,7 +149,7 @@ File
     @return bool
     public function isFile($file)
 
-##### 统一 API 寻找与模式匹配的文件路径 glob
+##### 寻找与模式匹配的文件路径 ==glob
 
     @param  string  $pattern
     @param  int     $flags
