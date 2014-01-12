@@ -1,2 +1,12 @@
-^(\t/\*\*\n)[^\{]+
 ^(\t/\*\*\n)[^\{]+public.+
+
+
+$md = File::get('D:\Work\wamp\www\laravel\laravel-note\4.1\Facade\File.md');
+preg_match_all('/a name="(.+)".+\n#{5} (.+)/', $md, $ok);
+$list = '';
+foreach ($ok[2] as $key=>$value)
+{
+    $list .= '- ['.trim($value).'](#'.$ok[1][$key].')<br />';
+}
+echo $list;
+die;
