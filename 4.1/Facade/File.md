@@ -1,116 +1,120 @@
 File
 ============
 
+\Illuminate\Filesystem\Filesystem.php
+
+---
+
 ##### 确定文件是否存在
 
     @param  string  $path
     @return bool
     public function exists($path)
 
-##### Get the contents of a file.
+##### 获取文件内容
 
     @param  string  $path
     @return string
     @throws FileNotFoundException
     public function get($path)
 
-##### Get the contents of a remote file.
+##### 获取远程文件内容
 
     @param  string  $path
     @return string
     public function getRemote($path)
 
-##### Get the returned value of a file.
+##### 获取 php 文件的返回值
 
     @param  string  $path
     @return mixed
     @throws FileNotFoundException
     public function getRequire($path)
 
-##### Require the given file once.
+##### 统一 API require_once
 
     @param  string  $file
     @return mixed
     public function requireOnce($file)
 
-##### Write the contents of a file.
+##### 统一 API 替换文件内容 file_put_contents
 
     @param  string  $path
     @param  string  $contents
     @return int
     public function put($path, $contents)
 
-##### Prepend to a file.
+##### 向文件头部累加内容
 
     @param  string  $path
     @param  string  $data
     @return int
     public function prepend($path, $data)
 
-##### Append to a file.
+##### 向文件尾部累加内容
 
     @param  string  $path
     @param  string  $data
     @return int
     public function append($path, $data)
 
-##### Delete the file at a given path.
+##### 删除文件
 
     @param  string|array  $paths
     @return bool
     public function delete($paths)
 
-##### Move a file to a new location.
+##### 统一 API 移动文件或重命名 rename
 
     @param  string  $path
     @param  string  $target
     @return bool
     public function move($path, $target)
 
-##### Copy a file to a new location.
+##### 统一 API 复制文件 copy
 
     @param  string  $path
     @param  string  $target
     @return bool
     public function copy($path, $target)
 
-##### Extract the file extension from a file path.
+##### 获取文件拓展名
 
     @param  string  $path
     @return string
     public function extension($path)
 
-##### Get the file type of a given file.
+##### 统一 API 获取文件类型 filetype 获取文件类型
 
     @param  string  $path
     @return string
     public function type($path)
 
-##### Get the file size of a given file.
+##### 统一 API 获取文件大小 filesize 获取文件大小
 
     @param  string  $path
     @return int
     public function size($path)
 
-##### Get the file's last modification time.
+##### 统一 API 获取文件最后修改时间 filemtime
 
     @param  string  $path
     @return int
     public function lastModified($path)
 
-##### Determine if the given path is a directory.
+##### 判断指定路径是否是一个目录
 
     @param  string  $directory
     @return bool
     public function isDirectory($directory)
 
-##### Determine if the given path is writable.
+##### 判断指定路径是否可写
 
     @param  string  $path
     @return bool
     public function isWritable($path)
 
-##### Determine if the given path is a file.
+##### 判断指定路径是否是一个文件
 
     @param  string  $file
     @return bool
