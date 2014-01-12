@@ -1,12 +1,13 @@
 File
 ============
 
-## 确定文件是否存在
+##### 确定文件是否存在
 
     @param  string  $path
     @return bool
     public function exists($path)
 
+##### ...
     /**
      * Get the contents of a file.
      *
