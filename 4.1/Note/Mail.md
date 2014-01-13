@@ -10,7 +10,7 @@ Mail
 
 
 <a name="alwaysFrom"></a>
-##### Set the global from address and name.
+##### 设置全局地址和名称。
 
     @param  string  $address
     @param  string  $name
@@ -27,7 +27,7 @@ Mail
     plain($view, array $data, $callback)
 
 <a name="send"></a>
-##### Send a new message using a view.
+##### 使用视图发送新邮件。
 
     @param  string|array  $view
     @param  array  $data
@@ -36,7 +36,7 @@ Mail
     send($view, array $data, $callback)
 
 <a name="queue"></a>
-##### Queue a new e-mail message for sending.
+##### 发送一封新邮件（默认队列）。
 
     @param  string|array  $view
     @param  array   $data
@@ -46,7 +46,7 @@ Mail
     queue($view, array $data, $callback, $queue = null)
 
 <a name="queueOn"></a>
-##### Queue a new e-mail message for sending on the given queue.
+##### 发送一封新邮件（指定队列）。
 
     @param  string  $queue
     @param  string|array  $view
@@ -56,7 +56,7 @@ Mail
     queueOn($queue, $view, array $data, $callback)
 
 <a name="later"></a>
-##### Queue a new e-mail message for sending after (n) seconds.
+##### 延迟（N）秒发送电子邮件（默认队列）。
 
     @param  int  $delay
     @param  string|array  $view
@@ -67,7 +67,7 @@ Mail
     later($delay, $view, array $data, $callback, $queue = null)
 
 <a name="laterOn"></a>
-##### Queue a new e-mail message for sending after (n) seconds on the given queue.
+##### 延迟（N）秒发送电子邮件（指定队列）。
 
     @param  string  $queue
     @param  int  $delay
@@ -99,28 +99,8 @@ Mail
     getViewEnvironment()
 
 <a name="failures"></a>
-##### Get the array of failed recipients.
+##### 获取发送失败的收件人数组
 
     @return array
     failures()
 
-<a name="setLogger"></a>
-##### Set the log writer instance.
-
-    @param  \Illuminate\Log\Writer  $logger
-    @return \Illuminate\Mail\Mailer
-    setLogger(Writer $logger)
-
-<a name="setQueue"></a>
-##### Set the queue manager instance.
-
-    @param  \Illuminate\Queue\QueueManager  $queue
-    @return \Illuminate\Mail\Mailer
-    setQueue(QueueManager $queue)
-
-<a name="setContainer"></a>
-##### Set the IoC container instance.
-
-    @param  \Illuminate\Container\Container  $container
-    @return void
-    setContainer(Container $container)

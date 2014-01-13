@@ -1,7 +1,5 @@
-File
+文件/目录 操作
 ============
-
-\Illuminate\Filesystem\Filesystem.php
 
 ---
 
