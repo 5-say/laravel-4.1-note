@@ -39,7 +39,7 @@ File
 
     @param  string  $path
     @return bool
-    public function exists($path)
+    exists($path)
 
 <a name="get"></a>
 ##### 获取文件内容
@@ -47,14 +47,14 @@ File
     @param  string  $path
     @return string
     @throws FileNotFoundException
-    public function get($path)
+    get($path)
 
 <a name="getRemote"></a>
 ##### 获取远程文件内容
 
     @param  string  $path
     @return string
-    public function getRemote($path)
+    getRemote($path)
 
 <a name="getRequire"></a>
 ##### 获取 php 文件的返回值
@@ -62,14 +62,14 @@ File
     @param  string  $path
     @return mixed
     @throws FileNotFoundException
-    public function getRequire($path)
+    getRequire($path)
 
 <a name="requireOnce"></a>
 ##### == require_once
 
     @param  string  $file
     @return mixed
-    public function requireOnce($file)
+    requireOnce($file)
 
 <a name="put"></a>
 ##### 替换文件内容 == file_put_contents
@@ -77,7 +77,7 @@ File
     @param  string  $path
     @param  string  $contents
     @return int
-    public function put($path, $contents)
+    put($path, $contents)
 
 <a name="prepend"></a>
 ##### 向文件头部累加内容
@@ -85,7 +85,7 @@ File
     @param  string  $path
     @param  string  $data
     @return int
-    public function prepend($path, $data)
+    prepend($path, $data)
 
 <a name="append"></a>
 ##### 向文件尾部累加内容
@@ -93,14 +93,14 @@ File
     @param  string  $path
     @param  string  $data
     @return int
-    public function append($path, $data)
+    append($path, $data)
 
 <a name="delete"></a>
 ##### 删除文件
 
     @param  string|array  $paths
     @return bool
-    public function delete($paths)
+    delete($paths)
 
 <a name="move"></a>
 ##### 移动文件或重命名 == rename
@@ -108,7 +108,7 @@ File
     @param  string  $path
     @param  string  $target
     @return bool
-    public function move($path, $target)
+    move($path, $target)
 
 <a name="copy"></a>
 ##### 复制文件 == copy
@@ -116,56 +116,56 @@ File
     @param  string  $path
     @param  string  $target
     @return bool
-    public function copy($path, $target)
+    copy($path, $target)
 
 <a name="extension"></a>
 ##### 获取文件拓展名
 
     @param  string  $path
     @return string
-    public function extension($path)
+    extension($path)
 
 <a name="type"></a>
 ##### 获取文件类型 == filetype
 
     @param  string  $path
     @return string
-    public function type($path)
+    type($path)
 
 <a name="size"></a>
 ##### 获取文件大小 == filesize
 
     @param  string  $path
     @return int
-    public function size($path)
+    size($path)
 
 <a name="lastModified"></a>
 ##### 获取文件最后修改时间 == filemtime
 
     @param  string  $path
     @return int
-    public function lastModified($path)
+    lastModified($path)
 
 <a name="isDirectory"></a>
 ##### 判断指定路径是否是一个目录
 
     @param  string  $directory
     @return bool
-    public function isDirectory($directory)
+    isDirectory($directory)
 
 <a name="isWritable"></a>
 ##### 判断指定路径是否可写
 
     @param  string  $path
     @return bool
-    public function isWritable($path)
+    isWritable($path)
 
 <a name="isFile"></a>
 ##### 判断指定路径是否是一个文件
 
     @param  string  $file
     @return bool
-    public function isFile($file)
+    isFile($file)
 
 <a name="glob"></a>
 ##### 寻找与模式匹配的文件路径 == glob
@@ -173,28 +173,28 @@ File
     @param  string  $pattern
     @param  int     $flags
     @return array
-    public function glob($pattern, $flags = 0)
+    glob($pattern, $flags = 0)
 
 <a name="files"></a>
 ##### 获取指定目录下所有文件的数组（不包含文件夹）
 
     @param  string  $directory
     @return array
-    public function files($directory)
+    files($directory)
 
 <a name="allFiles"></a>
 ##### 获取指定目录下所有文件夹和文件的数组（递归）
 
     @param  string  $directory
     @return array
-    public function allFiles($directory)
+    allFiles($directory)
 
 <a name="directories"></a>
 ##### 获取指定目录下所有文件夹的数组
 
     @param  string  $directory
     @return array
-    public function directories($directory)
+    directories($directory)
 
 <a name="makeDirectory"></a>
 ##### 创建目录
@@ -204,7 +204,7 @@ File
     @param  bool    $recursive
     @param  bool    $force
     @return bool
-    public function makeDirectory($path, $mode = 0777, $recursive = false, $force = false)
+    makeDirectory($path, $mode = 0777, $recursive = false, $force = false)
 
 <a name="copyDirectory"></a>
 ##### 复制目录
@@ -213,7 +213,7 @@ File
     @param  string  $destination
     @param  int     $options
     @return bool
-    public function copyDirectory($directory, $destination, $options = null)
+    copyDirectory($directory, $destination, $options = null)
 
 <a name="deleteDirectory"></a>
 ##### 递归删除目录
@@ -222,12 +222,12 @@ File
     @param  string  $directory
     @param  bool    $preserve
     @return bool
-    public function deleteDirectory($directory, $preserve = false)
+    deleteDirectory($directory, $preserve = false)
 
 <a name="cleanDirectory"></a>
 ##### 清除目录下文件
 
     @param  string  $directory
     @return bool
-    public function cleanDirectory($directory)
+    cleanDirectory($directory)
 
