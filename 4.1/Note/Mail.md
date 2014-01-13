@@ -1,9 +1,6 @@
-Mail
+邮件操作
 ============
 
-\Illuminate\Mail\Mailer.php
-
----
 
 
 ---
@@ -15,7 +12,7 @@ Mail
     @param  string  $address
     @param  string  $name
     @return void
-    alwaysFrom($address, $name = null)
+    Mail::alwaysFrom($address, $name = null)
 
 <a name="plain"></a>
 ##### Send a new message when only a plain part.
@@ -24,7 +21,7 @@ Mail
     @param  array   $data
     @param  mixed   $callback
     @return int
-    plain($view, array $data, $callback)
+    Mail::plain($view, array $data, $callback)
 
 <a name="send"></a>
 ##### 使用视图发送新邮件。
@@ -33,7 +30,17 @@ Mail
     @param  array  $data
     @param  Closure|string  $callback
     @return int
-    send($view, array $data, $callback)
+    Mail::send($view, array $data, $callback)
+
+案例：
+
+    Mail::send('mail.demo', array('name'=>'testUser'), function($message)
+    {
+        $message
+            ->to('目标邮箱')
+            ->subject('邮件标题')
+            ->attach('本地附件路径');
+    });
 
 <a name="queue"></a>
 ##### 发送一封新邮件（默认队列）。
@@ -43,7 +50,7 @@ Mail
     @param  Closure|string  $callback
     @param  string  $queue
     @return void
-    queue($view, array $data, $callback, $queue = null)
+    Mail::queue($view, array $data, $callback, $queue = null)
 
 <a name="queueOn"></a>
 ##### 发送一封新邮件（指定队列）。
@@ -53,7 +60,7 @@ Mail
     @param  array   $data
     @param  Closure|string  $callback
     @return void
-    queueOn($queue, $view, array $data, $callback)
+    Mail::queueOn($queue, $view, array $data, $callback)
 
 <a name="later"></a>
 ##### 延迟（N）秒发送电子邮件（默认队列）。
@@ -64,7 +71,7 @@ Mail
     @param  Closure|string  $callback
     @param  string  $queue
     @return void
-    later($delay, $view, array $data, $callback, $queue = null)
+    Mail::later($delay, $view, array $data, $callback, $queue = null)
 
 <a name="laterOn"></a>
 ##### 延迟（N）秒发送电子邮件（指定队列）。
@@ -75,7 +82,7 @@ Mail
     @param  array  $data
     @param  Closure|string  $callback
     @return void
-    laterOn($queue, $delay, $view, array $data, $callback)
+    Mail::laterOn($queue, $delay, $view, array $data, $callback)
 
 <a name="handleQueuedMessage"></a>
 ##### Handle a queued e-mail message job.
@@ -83,24 +90,24 @@ Mail
     @param  \Illuminate\Queue\Jobs\Job  $job
     @param  array  $data
     @return void
-    handleQueuedMessage($job, $data)
+    Mail::handleQueuedMessage($job, $data)
 
 <a name="pretend"></a>
 ##### Tell the mailer to not really send messages.
 
     @param  bool  $value
     @return void
-    pretend($value = true)
+    Mail::pretend($value = true)
 
 <a name="getViewEnvironment"></a>
 ##### Get the view environment instance.
 
     @return \Illuminate\View\Environment
-    getViewEnvironment()
+    Mail::getViewEnvironment()
 
 <a name="failures"></a>
 ##### 获取发送失败的收件人数组
 
     @return array
-    failures()
+    Mail::failures()
 

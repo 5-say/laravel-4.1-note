@@ -9,8 +9,8 @@ laravel-note
 
 ### Note
 
-- [File](/4.1/Facade/File.md)
-- [Mail](/4.1/Facade/Mail.md)
+- [文件/目录 操作](/4.1/Note/File.md)
+- [邮件操作](/4.1/Note/Mail.md)
 
 ### Tips
 
