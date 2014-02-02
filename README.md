@@ -12,5 +12,8 @@
       - 在 [issues](https://github.com/5-say/laravel-4.1-note/issues) 中参与讨论与交流。
       - 直接 [Fork 本项目](https://github.com/5-say/laravel-4.1-note/fork)，根据目前项目的文档结构进行补充修改，并提交 Pull Request。
 
+## 成功部署后的项目截图
 
-![Alt text](/img/sublime.png "Optional title")
+![Alt text](/img/readme/01.jpg "Optional title")
+
+![Alt text](/img/readme/02.jpg "Optional title")
