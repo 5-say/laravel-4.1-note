@@ -1,31 +1,23 @@
-// st 正则过滤
-^(\t/\*\*\n)[^{_]+public.+
+# 自用
 
 
-// 获取文件，并初始化
-$file = 'D:\Work\wamp\www\laravel\laravel-4.1-simple-blog\vendor\laravel\framework\src\Illuminate\Mail\Mailer.php';
-$md   = File::get($file);
-preg_match_all('/^(\t\/\*\*\n\t \* )([^{_]+public.+ (\w+)\(.+)/m', $md, $ok);
-$list = '<pre>';
-foreach ($ok[2] as $key=>$value)
-{
-    $list .= '<br /><br />&lt;a name="'.$ok[3][$key].'">&lt;/a><br />##### ';
-    $list .= preg_replace(
-        array('/ \* /', '/\t \*\/\n/', '/\t \*/', '/\t/', '/public function /'),
-        array('', '', '', '    ', ''),
-        $value);
-}
-echo $list.'</pre>';
-die;
+## st 正则过滤
 
+    ^(\t/\*\*\n)[^{_]+public.+
 
-// 根据 h5 生成 md 目录
-$md = File::get('D:\Work\wamp\www\laravel\laravel-note\4.1\Facade\File.md');
-preg_match_all('/a name="(.+)".+\n#{5} (.+)/', $md, $ok);
-$list = '';
-foreach ($ok[2] as $key=>$value)
-{
-    $list .= '- ['.trim($value).'](#'.$ok[1][$key].')<br />';
-}
-echo $list;
-die;
+## 获取文件，并初始化
+
+    $file = '...\src\Illuminate\Mail\Mailer.php';
+    $md   = File::get($file);
+    preg_match_all('/^(\t\/\*\*\n\t \* )([^{_]+public.+ (\w+)\(.+)/m', $md, $ok);
+    $list = '<pre>';
+    foreach ($ok[2] as $key=>$value)
+    {
+        $list .= '<br /><br />&lt;a name="'.$ok[3][$key].'">&lt;/a><br />## ';
+        $list .= preg_replace(
+            array('/ \* /', '/\t \*\/\n/', '/\t \*/', '/\t/', '/public function /'),
+            array('', '', '', '    ', ''),
+            $value);
+    }
+    echo $list.'</pre>';
+    die;
