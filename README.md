@@ -11,3 +11,6 @@
   - 如果您的手中有优秀的资料，并愿意与他人分享，欢迎您进行补充！您将有两个途径来参与这个项目：
       - 在 [issues](https://github.com/5-say/laravel-4.1-note/issues) 中参与讨论与交流。
       - 直接 [Fork 本项目](https://github.com/5-say/laravel-4.1-note/fork)，根据目前项目的文档结构进行补充修改，并提交 Pull Request。
+
+
+![Alt text](/img/sublime.png "Optional title")
