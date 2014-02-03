@@ -4,80 +4,84 @@
 
 ## 简介
 
-This is a package to integrate PHP Debug Bar (https://github.com/maximebf/php-debugbar) with Laravel.
-It includes a ServiceProvider to register the debugbar and attach it to the output. You can publish assets and configure it through Laravel.
-It bootstraps some Collectors to work with Laravel and implements a couple custom DataCollectors, specific for Laravel.
-It is configured to display Redirects and Ajax Requests. (Shown in a dropdown)
+这个资源包为 Laravel 整合了 [PHP Debug Bar](https://github.com/maximebf/php-debugbar) 。它引入一个服务提供者来注册调试工具栏，并将其附加到你的页面输出中。你可以通过 Laravel 来发布它的资源和配置文件。它引导一些收集器为 Laravel 工作，并针对 Laravel 实现了特殊的自定义 DataCollecters。它被配置为能够显示重定向和 AJAX 请求（若存在，则在右上方的下拉框中显示）。
 
 ![屏幕截图](/img/laravel-4-debugbar/GVc6C9g.png)
 
-Note: Use the DebugBar only in development. It can slow the application down (because it has to gather data). So when experiencing slowness, try disabling some of the collectors.
+> **注意：** 仅在开发环境中使用 DebugBar。它会减缓应用程序的速度（因为它会进行数据搜集）。因此当遇到运行缓慢的情况，请尝试禁用一部分收集器。
 
-This package includes some custom collectors:
- - RouteCollector: Show information about the current Route.
- - ViewCollector: Show the currently loaded views. (Optionally: display the shared data)
- - EventsCollector: Show all events
- - LaravelCollector: Show the Laravel version and Environment. (disabled by default)
- - SymfonyRequestCollector: replaces the RequestCollector with more information about the request/response
- - LogsCollector: Show the latest log entries from the storage logs. (disabled by default)
- - FilesCollector: Show the files that are included/required by PHP. (disabled by default)
- - ConfigCollector: Display the values from the config files. (disabled by default)
+这个资源包包含了一些定制的收集器：
+
+收集器|作用
+-|-
+RouteCollector|显示当前路由的信息。
+ViewCollector|显示当前加载的视图（可选：显示视图共享数据）。
+EventsCollector|显示所有的事件。
+LaravelCollector|显示 Laravel 的版本和运行环境（默认情况下禁用）。
+SymfonyRequestCollector|取代 RequestCollector 以获取更多请求与响应信息。
+LogsCollector|显示日志文件中最新的日志信息（默认情况下禁用）。
+FilesCollector|显示 PHP 中 included/required 的文件（默认情况下禁用）。
+ConfigCollector|显示配置文件的返回值（默认情况下禁用）。
 
 Bootstraps the following collectors for Laravel:
- - LogCollector: Show all Log messages
- - PdoCollector: Show Database Queries + Bindings
- - TwigCollector: For extra Twig info with barryvdh/laravel-twigbridge
- - SwiftMailCollector and SwiftLogCollector for Mail
 
-And the default collectors:
- - PhpInfoCollector
- - MessagesCollector
- - TimeDataCollector (With Booting and Application timing)
- - MemoryCollector
- - ExceptionsCollector
+收集器|作用
+-|-
+LogCollector|显示所有的日志信息。
+PdoCollector|显示数据库的查询与绑定信息。
+TwigCollector|For extra Twig info with barryvdh/laravel-twigbridge
+SwiftMailCollector|for Mail
+SwiftLogCollector|for Mail
 
-It also provides a Facade interface for easy logging Messages, Exceptions and Time
+默认收集器：
 
-## Installation
+- PhpInfoCollector
+- MessagesCollector
+- TimeDataCollector (With Booting and Application timing)
+- MemoryCollector
+- ExceptionsCollector
 
-Require this package in your composer.json and run composer update (or run `composer require barryvdh/laravel-debugbar:dev-master` directly):
+它还提供了一个 Facade 接口，使你能够更容易的记录信息、异常、运行时间。
+
+## 安装
+
+在你的 composer.json 中 Require 这个资源包，并运行 `composer update` 命令（或者直接执行 `composer require barryvdh/laravel-debugbar:dev-master` 命令）：
 
     "barryvdh/laravel-debugbar": "1.*"
 
-After updating composer, add the ServiceProvider to the providers array in app/config/app.php
+添加 ServiceProvider 到 `app/config/app.php` 文件的 providers 数组中。
 
     'Barryvdh\Debugbar\ServiceProvider',
 
-You need to publish the assets from this package.
+你需要发布这个包的静态资源。
 
     $ php artisan debugbar:publish
 
-Note: The public assets can change overtime (because of upstream changes), it is recommended to re-publish them after update. You can also add the republish command in composer.json.
+注意：发布的静态资源有可能过时（因为上游项目的变更），建议每次更新后都重新执行发布命令。你也可以在 composer.json 文件中添加“自动重新发布”的命令。
 
     "post-update-cmd": [
         "php artisan debugbar:publish"
     ],
 
-The profiler is enabled by default, if you have app.debug=true. You can override that in the config files.
-You can also set in your config if you want to include the vendor files also (FontAwesome and jQuery). If you already use them in your site, set it to false.
+如果你已经设置 `app.debug=true` 那么它将默认启动。你可以在配置文件中覆盖它。You can also set in your config if you want to include the vendor files also (FontAwesome and jQuery). If you already use them in your site, set it to false.
 You can also only display the js of css vendors, by setting it to 'js' or 'css'.
 
     $ php artisan config:publish barryvdh/laravel-debugbar
 
-You can also disable/enable the loggers you want. You can also use the IoC container to add extra loggers. (`$app['debugbar']->addCollector(new MyDataCollector)`)
+你可以禁用或启用你想要的收集器，你也可以通过 IOC 容器来添加额外的收集器（`$app['debugbar']->addCollector(new MyDataCollector)`）。
 
-If you want to use the facade to log messages, add this to your facades in app.php:
+如果你想要通过 Facade 来记录消息，请在 `app.php` 文件的 aliases 数组中添加下面的信息：
 
      'Debugbar' => 'Barryvdh\Debugbar\Facade',
 
-You can now add messages using the Facade, using the PSR-3 levels (debug, info, notice, warning, error, critical, alert, emergency):
+现在你就可以使用 Facade 来添加消息了，它遵循 PSR-3 levels (debug, info, notice, warning, error, critical, alert, emergency)：
 
     Debugbar::info($object);
     Debugbar::error("Error!");
     Debugbar::warning('Watch out..');
     Debugbar::addMessage('Another message', 'mylabel');
 
-And start/stop timing:
+并且记录 开始/结束 耗时：
 
     Debugbar::startMeasure('render','Time for rendering');
     Debugbar::stopMeasure('render');
@@ -86,7 +90,7 @@ And start/stop timing:
         //Do something..
     });
 
-Or log exceptions:
+或者记录异常：
 
     try {
         throw new Exception('foobar');
@@ -94,14 +98,14 @@ Or log exceptions:
         Debugbar::addException($e);
     }
 
-If you want you can add your own DataCollectors, through the Container or the Facade:
+如果你想添加自定义的 DataCollectors，可以通过 Facade 或 IOC 容器 来完成：
 
     Debugbar::addCollector(new DebugBar\DataCollector\MessagesCollector('my_messages'));
     //Or via the App container:
     $debugbar = App::make('debugbar');
     $debugbar->addCollector(new DebugBar\DataCollector\MessagesCollector('my_messages'));
 
-By default, the Debugbar is injected just before `</body>`. If you want to inject the Debugbar yourself,
+默认情况下 Debugbar 只会在 `</body>` 标签前注入。If you want to inject the Debugbar yourself,
 set the config option 'inject' to false and use the renderer yourself and follow http://phpdebugbar.com/docs/rendering.html
 
     $renderer = Debugbar::getJavascriptRenderer();
@@ -109,10 +113,11 @@ set the config option 'inject' to false and use the renderer yourself and follow
 Note: Not using the auto-inject, will disable the Request information, because that is added After the response.
 You can add the default_request datacollector in the config as alternative.
 
-## Enabling/Disabling on run time
-You can enable or disable the debugbar during run time.
+## 在运行时临时 启用/禁用 调试工具栏
+
+你可以在运行时临时 启用 或 禁用 调试工具栏
 
     \Debugbar::enable();
     \Debugbar::disable();
 
-NB. Once enabled, the collectors are added (and could produce extra overhead), so if you want to use the debugbar in production, disable in the config and only enable when needed.
+注意：一旦启用，收集器就将被加载（并且可能产生额外的开销），因此如果你要在生产环境下使用，请在配置中将其禁用，仅在需要的时候临时启用它。
