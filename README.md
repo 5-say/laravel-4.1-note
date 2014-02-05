@@ -16,4 +16,4 @@
 
 ![Alt text](/img/readme/01.jpg "Optional title")
 
-![Alt text](/img/readme/02.jpg "Optional title")
+![Alt text](/img/readme/mx3BBFD.png "Optional title")
